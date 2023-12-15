@@ -1,0 +1,41 @@
+<template>
+	<lightning-card title="Check box Component">
+		<!-- Combo box -->
+		<lightning-combobox label="Technology" placeholder="Select Technology" options={techoptions}
+			onchange={handleChange}></lightning-combobox>
+		<p>selected value: {checkboxOptions}</p>
+
+		<template if:true={showStack}>
+			<lightning-input type="search" label="Search Objects" onchange={handleSearch} value={searchTerm}
+				placeholder={itemcounts}></lightning-input>
+
+			<div class="slds-col slds-large-size_10-of-12 slds-medium-size_1-of-12 slds-size_1-of-12">
+				<a href="javascript.void(0)" onclick={selectall}>Select All</a>
+			</div>
+			<div class="slds-float_right">
+				<a href="javascript.void(0)" onclick={handleclearall}>Clear All</a>
+			</div>
+
+			<ul class="dropdown-list slds-dropdown_length-7 slds-p-left_medium">
+				<template for:each={valuesVal} for:item="profile">
+					<li key={profile.Id} class="dropdown-item">
+						<lightning-input type="checkbox" checked={profile.isChecked} label={profile.Name}
+							value={profile.Id} onchange={handleSelection}>
+						</lightning-input>
+					</li>
+				</template>
+			</ul>
+
+			<!-- Below code will show selected options from picklist in pills -->
+			<div class="selection-summary">
+				<div class="slds-p-around_x-small">
+					<template for:each={selectedItems} for:item="selectedItem">
+						<lightning-pill key={selectedItem.Id} label={selectedItem.Name} name={selectedItem.Id}
+							onremove={handleRemove}></lightning-pill>
+					</template>
+				</div>
+			</div>
+
+		</template>
+	</lightning-card>
+</template>

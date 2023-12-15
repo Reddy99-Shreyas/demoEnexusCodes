@@ -1,0 +1,36 @@
+<!-- <template>
+    <div style="height: 300px;">
+        <lightning-datatable key-field='Id' data={data} columns={columns}></lightning-datatable>
+    </div>
+</template> -->
+
+<template>
+    <lightning-card title="Account List">
+        <div class="slds-m-around_medium">
+            <template if:true={accounts}>
+                <lightning-datatable
+                    key-field="Id"
+                    data={accounts}
+                    columns={columns}
+                    onrowclick={handleRowClick}
+                    hide-checkbox-column="true">
+                </lightning-datatable>
+            </template>
+            <template if:false={accounts}>
+                No accounts found.
+            </template>
+        </div>
+        <template if:true={selectedAccount}>
+            <div class="slds-m-around_medium">
+                <lightning-card title="Account Details">
+                    <div class="slds-p-around_medium">
+                        <p>Name: {selectedAccount.Name}</p>
+                        <p>Industry: {selectedAccount.Industry}</p>
+                        <p>Phone: {selectedAccount.Phone}</p>
+                        <p>Type: {selectedAccount.Type}</p>
+                    </div>
+                </lightning-card>
+            </div>
+        </template>
+    </lightning-card>
+</template>

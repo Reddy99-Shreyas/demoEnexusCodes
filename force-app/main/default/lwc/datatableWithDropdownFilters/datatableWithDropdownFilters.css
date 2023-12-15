@@ -1,0 +1,19 @@
+.custom-dropdown {
+    display: inline-block;
+    margin-right: 15px;
+}
+
+.dropdown-header {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.dropdown-header lightning-icon {
+    margin-left: 4px;
+}
+
+.hidden-content {
+    display: none;
+}

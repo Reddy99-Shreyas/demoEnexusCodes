@@ -1,0 +1,10 @@
+<template>
+    <lightning-card title="Wrapper Class Component">
+        <template if:true={data}>
+            <lightning-datatable key-field='Id' data={data} columns={columns}></lightning-datatable>
+        </template>
+        <template if:false={error}>
+            {error}
+        </template>
+    </lightning-card>
+</template>

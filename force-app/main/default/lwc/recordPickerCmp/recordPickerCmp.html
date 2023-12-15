@@ -1,0 +1,10 @@
+<template>
+  <lightning-record-picker label="Accounts" placeholder="Search Accounts..." object-api-name="Account"
+    onchange={handleChange} filter={filter} matching-info={matchingInfo}>
+  </lightning-record-picker>
+
+  <br /><br />
+  <template if:true={ContactsData}>
+    <lightning-datatable key-field="id" data={dataList} columns={columnList}></lightning-datatable>
+  </template>
+</template>

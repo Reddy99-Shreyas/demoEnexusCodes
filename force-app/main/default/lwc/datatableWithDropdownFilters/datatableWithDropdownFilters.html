@@ -1,0 +1,65 @@
+<template>
+    <lightning-card title="Datatable with Dropdown Filters">
+        <div class="slds-m-around_medium">
+            <div class="slds-grid slds-wrap">
+                <div class="slds-col slds-size_1-of-2">
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header" onclick={toggleNameFilter}>
+                            Name <lightning-icon icon-name="utility:down" size="x-small"></lightning-icon>
+                        </div>
+                        <template if:true={nameFilterVisible}>
+                            <div class="dropdown-content">
+                                <template for:each={nameOptions} for:item="option">
+                                    <label key={option.value} class="slds-checkbox">
+                                        <input type="checkbox" name="nameFilter" value={option.value}
+                                            onchange={handleNameFilter} />
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label">{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="slds-col slds-size_1-of-2">
+                    <div class="custom-dropdown">
+                        <div class="dropdown-header" onclick={toggleAgeFilter}>
+                            Age <lightning-icon icon-name="utility:down" size="x-small"></lightning-icon>
+                        </div>
+                        <template if:true={ageFilterVisible}>
+                            <div class="dropdown-content">
+                                <template for:each={ageOptions} for:item="option">
+                                    <label key={option.value} class="slds-checkbox">
+                                        <input type="checkbox" name="ageFilter" value={option.value}
+                                            onchange={handleAgeFilter} />
+                                        <span class="slds-checkbox_faux"></span>
+                                        <span class="slds-form-element__label">{option.label}</span>
+                                    </label>
+                                </template>
+                            </div>
+                        </template>
+                    </div>
+                </div>
+                <div class="slds-col">
+                    <lightning-button label="Apply Filters" onclick={applyFilters} variant="brand"></lightning-button>
+                </div>
+            </div>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffered slds-table_col-bordered">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Age</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={filteredData} for:item="record">
+                        <tr key={record.Id}>
+                            <td>{record.Name}</td>
+                            <td>{record.Age}</td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+        </div>
+    </lightning-card>
+</template>
